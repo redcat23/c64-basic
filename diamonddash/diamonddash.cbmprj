@@ -61,7 +61,7 @@
     <ExtendedBASIC>False</ExtendedBASIC>
     <SourceFiles>
         <SourceFile>
-            <Name>\BASIC Files\diamonddash.bas</Name>
+            <Name>BASIC Files\diamonddash.bas</Name>
             <PrgName />
             <FileType>1</FileType>
             <IncludeInBuild>True</IncludeInBuild>
