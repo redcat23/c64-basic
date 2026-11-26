@@ -49,7 +49,7 @@
     <PostBuildCommands />
   </BuildEvents>
   <BuildList>
-    <FileName>tetris\BASIC Files\tetris.bas</FileName>
+    <FileName>BASIC Files\tetris.bas</FileName>
   </BuildList>
   <DetermineBuildOrder>0</DetermineBuildOrder>
   <PaddingByte>0</PaddingByte>
@@ -61,7 +61,7 @@
   <ExtendedBASIC>False</ExtendedBASIC>
   <SourceFiles>
     <SourceFile>
-      <Name>tetris\Screen Designs\tetris board.sdd</Name>
+      <Name>Screen Designs\tetris board.sdd</Name>
       <PrgName />
       <FileType>9</FileType>
       <IncludeInBuild>True</IncludeInBuild>
@@ -72,7 +72,7 @@
       <FileOpen>False</FileOpen>
     </SourceFile>
     <SourceFile>
-      <Name>tetris\BASIC Files\tetris.bas</Name>
+      <Name>BASIC Files\tetris.bas</Name>
       <PrgName />
       <FileType>1</FileType>
       <IncludeInBuild>True</IncludeInBuild>
