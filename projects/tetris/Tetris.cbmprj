@@ -49,7 +49,7 @@
         <PostBuildCommands />
     </BuildEvents>
     <BuildList>
-        <FileName>BASIC Files\tetris.bas</FileName>
+        <FileName>BASIC Files\tetrisv1.2.bas</FileName>
     </BuildList>
     <DetermineBuildOrder>0</DetermineBuildOrder>
     <PaddingByte>0</PaddingByte>
