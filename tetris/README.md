@@ -31,7 +31,11 @@ Left and right repeat while held. Rotation and hard drop require a new keypress.
 
 Development prioritizes responsive controls and understandable code. Source comments explain the game’s structure and important implementation decisions.
 
-Source files and build instructions will be added next.
+Current development baseline: **1.2**.
+
+Open `Tetris.cbmprj` at the repository root in CBM prg Studio 4.10.0.
+
+The project builds `tetris/BASIC Files/tetris.bas`. Build the project in Studio and test it using VICE.
 
 ## Planned progression
 
