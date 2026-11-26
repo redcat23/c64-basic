@@ -1,0 +1,8 @@
+# CBM prg Studio backup directories
+bak/
+
+# Generated program and debugging files
+*.prg
+*.dbg
+*.dmp
+*.dup
