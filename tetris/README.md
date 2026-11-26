@@ -39,6 +39,6 @@ Ten levels, advancing every ten cleared lines. Level ten continues indefinitely 
 
 ## License
 
-This project is covered by the repository’s [MIT license](../../LICENSE).
+This project is covered by the repository’s [MIT license](../LICENSE).
 
 This is an independent learning project, unaffiliated with the owners of Tetris.
