@@ -72,17 +72,6 @@
             <FileOpen>False</FileOpen>
         </SourceFile>
         <SourceFile>
-            <Name>\basictetris.bas</Name>
-            <PrgName />
-            <FileType>1</FileType>
-            <IncludeInBuild>False</IncludeInBuild>
-            <Regions />
-            <Breakpoints />
-            <Bookmarks />
-            <Topmost>False</Topmost>
-            <FileOpen>False</FileOpen>
-        </SourceFile>
-        <SourceFile>
             <Name>\BASIC Files\tetris.bas</Name>
             <PrgName />
             <FileType>1</FileType>
