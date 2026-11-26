@@ -1,0 +1,44 @@
+# BASIC Tetris
+
+A Tetris-style game being developed incrementally in Commodore 64 BASIC V2.
+
+The gameplay target is the classic Spectrum HoloByte DOS version, with random pieces, continuous play, and increasing falling speed.
+
+## Status
+
+Work in progress. Movement, rotation, collision detection, hard drop, delayed locking, and automatic falling are implemented.
+
+Line clearing, scoring, level progression, next-piece preview, and game-over detection remain to be added.
+
+## Controls
+
+| Key | Action |
+|---|---|
+| A | Move left |
+| D | Move right |
+| S | Descend one row; repeats while held |
+| E | Rotate clockwise |
+| Q | Rotate counterclockwise |
+| Space | Drop and lock immediately |
+
+Left and right repeat while held. Rotation and hard drop require a new keypress.
+
+## Development
+
+- Language: Commodore BASIC V2
+- Editor: CBM prg Studio
+- Emulator used for testing: VICE
+
+Development prioritizes responsive controls and understandable code. Source comments explain the game’s structure and important implementation decisions.
+
+Source files and build instructions will be added next.
+
+## Planned progression
+
+Ten levels, advancing every ten cleared lines. Level ten continues indefinitely at the final falling speed.
+
+## License
+
+This project is covered by the repository’s [MIT license](../../LICENSE).
+
+This is an independent learning project, unaffiliated with the owners of Tetris.
