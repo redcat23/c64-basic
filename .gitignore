@@ -6,3 +6,5 @@ bak/
 *.dbg
 *.dmp
 *.dup
+*.tmp
+*.obj

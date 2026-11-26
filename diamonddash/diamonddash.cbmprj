@@ -48,9 +48,7 @@
         <PreBuildCommands />
         <PostBuildCommands />
     </BuildEvents>
-    <BuildList>
-        <FileName>BASIC Files\diamonddash.bas</FileName>
-    </BuildList>
+    <BuildList />
     <DetermineBuildOrder>0</DetermineBuildOrder>
     <PaddingByte>0</PaddingByte>
     <!--Screen designer settings-->
