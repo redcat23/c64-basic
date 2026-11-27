@@ -79,6 +79,8 @@ Follow the shared [VICE instructions](../README.md#vice) or [CCS64 instructions]
 
 The loading steps were checked against emulator documentation; this update did not include a build or runtime test in either emulator. See [input and troubleshooting](../README.md#input-and-troubleshooting) for keyboard mapping and loading help.
 
+For an optional disk-image workflow, see [put a built PRG into a disk image](../README.md#put-a-built-prg-into-a-disk-image): Windows drag and drop, a Linux/Windows graphical option, and `c1541` commands. Build the PRG first.
+
 ## License
 
 Covered by the repository's [MIT license](../LICENSE).

@@ -71,6 +71,80 @@ Install [CCS64](https://www.ccs64.com/) on Windows. Launch it in windowed mode a
 
 **Verification:** the VICE and CCS64 loading instructions were checked against their official manuals on November 27, 2026. No emulator was launched for this documentation update, and these instructions do not establish that every project works in both emulators.
 
+## Put a built PRG into a disk image
+
+Disk-image managers copy Commodore files into and out of images such as `.d64`; they do not compile or tokenize the repository's Studio `.bas` source. First build a `.prg` in Studio as described above. On Linux, you can copy that built PRG from your Windows machine and package it there. These examples do not establish a Linux source-build workflow.
+
+A disk image is optional for these standalone programs: you can still load a PRG directly. A D64 is useful for collecting several built programs on one virtual disk.
+
+### Windows: DirMaster drag and drop
+
+[DirMaster](https://style64.org/dirmaster) is a freely downloadable Windows disk-image manager. Its [official documentation](https://style64.org/dirmaster/documentation/) describes PRG import/export and drag and drop.
+
+1. Open DirMaster and choose **Disk → New → D64**, or open an existing D64.
+2. Drag a built `.prg` from File Explorer onto the open disk-image window. **File → Import** is another option.
+3. Check the new PRG entry, then choose **Disk → Save As** for a new image, or **Disk → Save** for an existing one. Edits are not written to the image file until saved.
+4. To copy a program back out, drag its entry to File Explorer or choose **File → Export** and select raw `.prg` output.
+
+### Linux and Windows: droiD64 graphical option
+
+[droiD64](https://droid64.sourceforge.net/) is a free, open-source Java disk-image manager supporting creation/opening of D64 images and insertion/extraction of PRG files.
+
+1. Install Java 11 or newer and download/extract the full binary ZIP bundle from the project site.
+2. Start the bundled `droid64.sh` on Linux or `droid64.bat` on Windows. Use the bundle's launcher so its supporting libraries are included.
+3. Create or open a D64 and use the file operations to insert a built PRG or extract a PRG back to the host filesystem. Consult the bundled help for the controls in your release, and confirm the saved image by reopening it.
+
+The verified drag-and-drop steps above apply to DirMaster. This guide does not assume droiD64 has identical controls.
+
+### Linux and Windows: VICE c1541 commands
+
+VICE includes the free disk-image utility [`c1541`](https://vice-emu.sourceforge.io/vice_14.html). Install a VICE package containing that tool; some Linux distributions package utilities separately. Use `c1541` on your PATH on Linux, or the installed `c1541.exe` path on Windows.
+
+For Windows PowerShell, substitute your actual paths. Use a new output filename: **the format command creates/formats the disk image**, so do not aim it at an image you want to preserve.
+
+```powershell
+$c1541 = 'C:\Emulators\VICE\bin\c1541.exe'
+$diskImage = 'C:\C64Builds\eatstar-demo.d64'
+$builtPrg = 'C:\C64Builds\eatstar.prg'
+
+& $c1541 -format 'eatstar,es' d64 $diskImage
+```
+
+After that succeeds, add the PRG and list the directory:
+
+```powershell
+& $c1541 -attach $diskImage -write $builtPrg eatstar -list
+```
+
+Copy it back out to a separate host file:
+
+```powershell
+& $c1541 -attach $diskImage -read eatstar 'C:\C64Builds\eatstar-extracted.prg'
+```
+
+On Linux, run these equivalents from a folder containing the built `eatstar.prg`, choosing a new image filename:
+
+```sh
+c1541 -format 'eatstar,es' d64 eatstar-demo.d64
+c1541 -attach eatstar-demo.d64 -write eatstar.prg eatstar -list
+c1541 -attach eatstar-demo.d64 -read eatstar eatstar-extracted.prg
+```
+
+Run each command separately and stop if it fails. Here `eatstar` is the filename inside the disk; it can differ from the host's `eatstar.prg`. For an existing image, skip formatting and use `-attach ... -write ...` with a disk filename not already in use. Repeat to add other programs.
+
+### Run the disk image
+
+Use VICE's `-autostart` command from the emulator instructions with the D64 path instead of the PRG path; CCS64 accepts a D64 path with `-autorun` too. Automatic startup selects the first program. Alternatively, attach the image to drive 8 and enter these commands at the emulated C64 BASIC prompt to select a program by name:
+
+```basic
+LOAD"EATSTAR",8
+RUN
+```
+
+Use the actual name listed in the disk directory. The first command loads this BASIC program; the second starts it. Keep generated images outside your checkout unless you intentionally plan to commit them: the current `.gitignore` excludes PRGs but does not exclude D64 images.
+
+**Verification:** these disk-image workflows were checked against the linked official documentation on November 27, 2026. The tools were not installed or exercised for this update.
+
 ## Development workflow
 
 ### Retrieve changes

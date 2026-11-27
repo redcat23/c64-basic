@@ -1,10 +1,10 @@
-﻿# Eatstar
+# Eatstar
 
 A Commodore 64 BASIC V2 star-collection prototype. The player moves around a bordered board, collecting stars for 10 points each. An enemy moves toward the player and deducts 10 points when it takes a star. Score thresholds change the level and target number of stars.
 
 ## Status and controls
 
-The latest source commit is labeled version **0.8** (`5a40e3e`). Movement uses W, A, S, and D. These controls are read directly from the source's `GET` comparisons.
+The current development baseline is version **0.8**. Movement uses W, A, S, and D. These controls are read directly from the source's `GET` comparisons.
 
 The BASIC source draws its own board. [GameBoard.sdd](Screen%20Designs/GameBoard.sdd) contains three screen designs for editing in Studio; adding it to the project does not by itself make the BASIC program load those layouts. This remains a prototype, with no implemented player/enemy game-over condition or ending.
 
@@ -27,6 +27,8 @@ Build `eatstar/eatstar.cbmprj` in CBM prg Studio to generate `eatstar.prg`. Loca
 Follow the shared [VICE instructions](../README.md#vice) or [CCS64 instructions](../README.md#ccs64), substituting the full path to your `eatstar.prg`. Once built, this program can be loaded without opening Studio. Use the controls described above.
 
 The loading steps were checked against emulator documentation; this update did not include a build or runtime test in either emulator. See [input and troubleshooting](../README.md#input-and-troubleshooting) for keyboard mapping and loading help.
+
+For an optional disk-image workflow, see [put a built PRG into a disk image](../README.md#put-a-built-prg-into-a-disk-image): Windows drag and drop, a Linux/Windows graphical option, and `c1541` commands. Build the PRG first.
 
 ## License
 
