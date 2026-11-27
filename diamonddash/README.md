@@ -65,6 +65,14 @@ Earlier milestone descriptions below summarize the recorded development notes; t
 | 0.4.0 | Designed level replacing random food placement, diggable dirt, fixed diamonds, collection counter and goal, character color handling, quit key, and preliminary timer code. |
 | 0.5.0 | Brown dirt, gray interior walls, cyan diamonds represented by `Z`, one diamond replaced by a wall leaving 12, and the collection goal increased from one to five. |
 
+## Run in VICE or CCS64
+
+Build `diamonddash/diamonddash.cbmprj` in CBM prg Studio to generate `diamonddash.prg`. Locate it using Studio's build output; generated PRGs are ignored by Git and are not included in this checkout.
+
+Follow the shared [VICE instructions](../README.md#vice) or [CCS64 instructions](../README.md#ccs64), substituting the full path to your `diamonddash.prg`. Once built, this program can be loaded without opening Studio. Use the controls described above.
+
+The loading steps were checked against emulator documentation; this update did not include a build or runtime test in either emulator. See [input and troubleshooting](../README.md#input-and-troubleshooting) for keyboard mapping and loading help.
+
 ## License
 
 Covered by the repository's [MIT license](../LICENSE). This is an independent learning project, unaffiliated with the owners of Boulder Dash.

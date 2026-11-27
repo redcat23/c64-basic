@@ -35,6 +35,14 @@ To check the baseline, try each movement key, confirm that map obstacles block m
 
 Keep only the intended active BASIC source included in the project build. Use Git history to preserve previous versions.
 
+## Run in VICE or CCS64
+
+Build `Maprun/Maprun.cbmprj` in CBM prg Studio to generate `maprun.prg`. Locate it using Studio's build output; generated PRGs are ignored by Git and are not included in this checkout.
+
+Follow the shared [VICE instructions](../README.md#vice) or [CCS64 instructions](../README.md#ccs64), substituting the full path to your `maprun.prg`. Once built, this program can be loaded without opening Studio. Use the controls described above.
+
+The loading steps were checked against emulator documentation; this update did not include a build or runtime test in either emulator. See [input and troubleshooting](../README.md#input-and-troubleshooting) for keyboard mapping and loading help.
+
 ## License
 
 This project is covered by the repository's [MIT license](../LICENSE).

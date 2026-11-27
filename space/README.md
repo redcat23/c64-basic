@@ -71,6 +71,14 @@ These notes are based on source and project-file review. No Studio build or VICE
 
 Keep the source filename stable. Use commits to record changes; generated `.prg` files are ignored by Git.
 
+## Run in VICE or CCS64
+
+Build `space/space.cbmprj` in CBM prg Studio to generate `space.prg`. Locate it using Studio's build output; generated PRGs are ignored by Git and are not included in this checkout.
+
+Follow the shared [VICE instructions](../README.md#vice) or [CCS64 instructions](../README.md#ccs64), substituting the full path to your `space.prg`. Once built, this program can be loaded without opening Studio. Use the controls described above.
+
+The loading steps were checked against emulator documentation; this update did not include a build or runtime test in either emulator. See [input and troubleshooting](../README.md#input-and-troubleshooting) for keyboard mapping and loading help.
+
 ## License
 
 Covered by the repository's [MIT license](../LICENSE).

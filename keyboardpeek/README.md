@@ -29,6 +29,14 @@ Open `keyboardpeek/keyboardpeek.cbmprj` from the repository root in CBM prg Stud
 
 Runtime verification takes place on the Windows development VM. Check that different keys display their corresponding codes and that releasing a key leaves the last result visible.
 
+## Run in VICE or CCS64
+
+Build `keyboardpeek/keyboardpeek.cbmprj` in CBM prg Studio to generate `keyboardpeek.prg`. Locate it using Studio's build output; generated PRGs are ignored by Git and are not included in this checkout.
+
+Follow the shared [VICE instructions](../README.md#vice) or [CCS64 instructions](../README.md#ccs64), substituting the full path to your `keyboardpeek.prg`. Once built, this program can be loaded without opening Studio. Press a key to display its scan code, as described under Usage above.
+
+The loading steps were checked against emulator documentation; this update did not include a build or runtime test in either emulator. See [input and troubleshooting](../README.md#input-and-troubleshooting) for keyboard mapping and loading help.
+
 ## License
 
 This project is covered by the repository's [MIT license](../LICENSE).
