@@ -5,7 +5,7 @@
 20 x=rnd(-ti) 
 30 poke53280,0:poke53281,0:poke650,128
 35 m=1024:cr=55296
-40 p=459:tg=1:g=0:l=1:b=797
+40 tg=1:g=0:l=1:b=797:p=660
 49 rem
 50 rem build top corners
 51 pokem,85:pokem+39,73:pokecr,6:pokecr+39,6
@@ -21,20 +21,20 @@
 61 print"{home}"
 62 print"{blue}{125} {cyan}score:       {blue}UCI{red}SSSS{blue}UCI {cyan}level:       {blue}{125}";
 63 print"{171}CCCCCCCCCCCCCCK JCCCCK JCCCCCCCCCCCCCC{179}";
-90 gosub 711:rem build the score board
-95 rem
+70 rem initialization
+90 gosub711:rem build the score board
 100 rem main loop
-105 poke m+p,0:pokecr+p,1
-110 gosub 800
-115 if g<tg then gosub 600
-120 get mv$:if mv$="" then 100
-125 if mv$="{f1}" then gosub 6000
-130 if mv$="" then 120
-140 if mv$="w" then np=p-40
-150 if mv$="s" then np=p+40
-160 if mv$="a" then np=p-1
-170 if mv$="d" then np=p+1
-180 if np=p then 100
+105 pokem+p,0:pokecr+p,1
+110 gosub800
+115 ifg<tgthengosub600
+120 getmv$:if mv$=""then100
+125 ifmv$="{f1}"thengosub6000
+130 ifmv$=""then120
+140 ifmv$="w"thennp=p-40
+150 ifmv$="s"thennp=p+40
+160 ifmv$="a"thennp=p-1
+170 ifmv$="d"thennp=p+1
+180 ifnp=pthen100
 190 ifpeek(1024+np)=32thenpokem+p,32:p=np:goto100
 200 ifpeek(1024+np)=42theng=g-1:s=s+10:pokem+p,32:p=np:goto100
 290 np=p
@@ -42,9 +42,9 @@
 595 rem
 600 rem gems
 605 gosub700
-610 for n=1totg
+610 forn=1totg
 620 gp=int(rnd(1)*873)+85:ifpeek(1024+gp)<>32then620
-635 poke m+gp,42:poke cr+gp,5:g=g+1:ifg=tgthenreturn
+635 pokem+gp,42:pokecr+gp,5:g=g+1:ifg=tgthenreturn
 640 nextn:return
 690 rem
 700 rem levels
@@ -63,13 +63,12 @@
 715 return
 720 rem
 800 rem enemies
-820 x=p-b
-830 if x>40 then nb=b+40:goto890
-840 if x<-40 then nb=b-40:goto890
-850 if x<0 then nb=b-1:goto890
-860 if x>0 then nb=b+1:goto890
-890 if peek(1024+nb)=32 then pokem+b,32:b=nb:pokem+b,88:pokecr+b,7
-900 if peek(1024+nb)=42 then pokem+b,32:b=nb:s=s-10:g=g-1:pokem+b,88:pokecr+b,7
+830 ifp-b>40thennb=b+40:goto890
+840 ifp-b<-40thennb=b-40:goto890
+850 ifp-b<0thennb=b-1:goto890
+860 ifp-b>0thennb=b+1:goto890
+890 ifpeek(1024+nb)=32thenpokem+b,32:b=nb:pokem+b,88:pokecr+b,7
+900 ifpeek(1024+nb)=42thenpokem+b,32:b=nb:s=s-10:g=g-1:pokem+b,88:pokecr+b,7
 1090 return
 6000 rem debug
 6010 print "{home}{down*2}{right*2}"
