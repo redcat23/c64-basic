@@ -9,6 +9,7 @@ Commodore 64 BASIC games, experiments, and utilities developed incrementally wit
 | [Tetris](tetris/README.md) | Tetris-style prototype with seven pieces, movement, rotation, collision detection, hard drop, delayed locking, and automatic falling. Line clearing, scoring, and game-over detection remain planned. | `tetris/Tetris.cbmprj` |
 | [Maprun](Maprun/README.md) | Fixed-map movement experiment with WASD controls, obstacle checks, and a second character that moves randomly. | `Maprun/Maprun.cbmprj` |
 | [Diamond Dash](diamonddash/README.md) | Early Boulder Dash-style prototype, baseline **0.5.0**, with diggable dirt, walls, 12 fixed diamonds, 25-point collection, and a five-diamond goal. Timer and level progression remain unfinished. | `diamonddash/diamonddash.cbmprj` |
+| [Space](space/README.md) | Prison text-adventure prototype with eight rooms, typed commands, inventory, a guard conversation, and a door puzzle. | `space/space.cbmprj` |
 | [Keyboard Peek](keyboardpeek/README.md) | Five-line utility displaying the current keyboard scan code read from `PEEK(197)`. | `keyboardpeek/keyboardpeek.cbmprj` |
 
 ## Organization and tools
