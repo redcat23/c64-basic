@@ -70,7 +70,7 @@
             <FileOpen>True</FileOpen>
         </SourceFile>
         <SourceFile>
-            <Name>\G:\My Drive\C64BASIC\space\GameBoardLevel1.sdd</Name>
+            <Name />
             <PrgName />
             <FileType>9</FileType>
             <IncludeInBuild>True</IncludeInBuild>
