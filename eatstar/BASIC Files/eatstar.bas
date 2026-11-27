@@ -1,65 +1,73 @@
-1 rem got the dude to move, 1 randomly placed gem and the game board
+1 rem 0.5 re-write: dude moves, 1 randomly placed gem and the game board
+2 rem 0.6 code optimizatons, levels with multiple stars (buggy)
 5 print"{clear}"
-10 rem i=screen r=row c=column m=1024(1mb)
+7 clr
+10 rem i=screen r=row c=column m=1024(1mb) cr=color ram
 15 rem (west,east,top,bottom) tg=total gems
-20 clr
-25 x=rnd(-ti):r=12:c=20:m=1024:w=1:e=38:t=3:b=23:tg=1:g=0
-30 poke 53280,1:poke53281,0:poke 650,128
+18 x=rnd(-ti)
+20 cr=55296:m=1024
+25 r=12:c=20:w=1:e=38:t=3:b=23:tg=1:g=0:l=1:dimgr(4):dimgc(4)
+30 poke 53280,1:poke53281,0:poke650,128
 40 rem build top corners
-41 poke1024,85:poke1024+39,73:poke55296,6:poke55296+39,6
+41 pokem,85:pokem+39,73:pokecr,6:pokecr+39,6
 42 rem build sides
 43 for n=40to920 step 40
-44 poke1024+n,66:poke1024+n+39,66:poke55296+n,6:poke55296+n+39,6
+44 pokem+n,66:pokem+n+39,66:pokecr+n,6:pokecr+n+39,6
 45 nextn
 46 rem build top and bottom
-47 poke1024+960,74:poke1024+999,75:poke55296+960,6:poke55296+999,6
+47 pokem+960,74:pokem+999,75:pokecr+960,6:pokecr+999,6
 48 for n=1to19
-49 poke1024+n,67:poke1024+39-n,67:poke55296+n,6:poke55296+39-n,6
-50 poke1024+n+960,67:poke1024+999-n,67:poke55296+n+960,6:poke55296+999-n,6
+49 pokem+n,67:pokem+39-n,67:pokecr+n,6:pokecr+39-n,6
+50 pokem+n+960,67:pokem+999-n,67:pokecr+n+960,6:pokecr+999-n,6
 51 nextn 
 55 rem build score board
 56 print "{home}"
 57 print "{blue}{125} score:       UCI{red}SSSS{blue}UCI level:       {125}";
 58 print "{171}CCCCCCCCCCCCCCK JCCCCK JCCCCCCCCCCCCCC{179}";
 70 rem draw starting location before game starts
-75 poke 1024+r*40+c,0
+72 rem xy=r*40+c:pokem+xy,0:pokecr+xy,1:goto5300
+82 goto230
 100 rem main loop
-104 rem check stuff
-105 ifg<>tg then gosub 5000
-110 rp=r:cp=c:rem ip = before change
 120 get mv$
-130 if mv$="{f1}" then gosub 1000
-140 if mv$="d" then c=c+1
-150 if mv$="a" then c=c-1
-160 if mv$="w" then r=r-1
-170 if mv$="s" then r=r+1
-180 if c=e+1 then c=e
-190 if c=w-1 then c=w
-200 if r=t-1 then r=t
-210 if r=b+1 then r=b
-220 if mv$="" goto 100
-225 if c=cp and r=rp then goto 100
-230 rem draw main dude
-240 poke m+rp*40+cp,96:poke m+r*40+c,0:poke55296+r*40+c,1
-250 gosub 5200
-300 goto 100
-1000 rem Debug
-1005 print"{home}"
-1007 print "debug"
-1008 print" r     c"
-1010 print r"  "c"  "str$(r*40+c)
-1020 for n=1totg
-1025 print gr(n)"  "gc(n)"  "(gr(n)*40+gc(n))
-1030 nextn
-1035 print s
-1040 return
-5000 rem gems
-5010 for n=1totg
-5015 g=g+1
-5020 gr(n)=int(rnd(1)*20)+3:gc(n)=int(rnd(1)*e-1)+w+1
-5030 poke m+gr(n)*40+gc(n),42:poke55296+gr(n)*40+gc(n),5
-5040 return
+125 ifmv$<>""then130
+128 goto100
+130 ifmv$="{f1}"thengosub6000
+135 rp=r:cp=c:rem rp/cp = before change
+140 ifmv$="d"thenc=c+1:ifc=e+1thenc=e
+150 ifmv$="a"thenc=c-1:ifc=w-1thenc=w
+160 ifmv$="w"thenr=r-1:ifr=t-1thenr=t
+170 ifmv$="s"thenr=r+1:ifr=b+1thenr=b
+180 ifcp<>corcr<>rthen230
+215 goto100
+230 rem draw main dude (xy is the screen loc)
+235 xy=r*40+c:pokem+rp*40+cp,96:poke m+xy,0:pokecr+xy,1
 5200 rem gem check
-5210 for n=1totg
-5220 if gr(n)*40+gc(n)=r*40+c then s=s+10:g=g-1:return
-5230 nextn:return
+5210 forn=1totg
+5215 ifgr(n)*40+gc(n)=xythens=s+10:g=g-1
+5217 nextn
+5220 ifg=tgthen100
+5300 rem place the gems on the board
+5310 forn=1totg-g
+5315 gr(n)=int(rnd(1)*20)+3:gc(n)=int(rnd(1)*e-1)+w+1
+5330 pokem+gr(n)*40+gc(n),42:pokecr+gr(n)*40+gc(n),5
+5335 g=g+1
+5340 nextn
+5341 rem levels
+5342 ifs=50thenl=2
+5343 ifs=100thenl=3:tg=2
+5344 ifs=150thenl=4
+5345 ifs=200thenl=5
+5346 ifs=250thenl=6:tg=3
+5347 ifs=300thenl=7
+5348 ifs=350thenl=8
+5349 ifs=400thenl=9
+5350 ifs=450thenl=10:tg=4
+5360 rem some infinate thing after level 10
+5365 poke211,8:poke214,1:sys58732:print"{white}"str$(s)
+5370 poke211,32:poke214,1:sys58732:print"{white}"str$(l)
+5400 goto100
+6000 rem Debug
+6005 print"{home}":print"debug":print" r     c":print r"  "c"  "str$(xy)
+6020 for n=1totg:print gr(n)"  "gc(n)"  "(gr(n)*40+gc(n)):nextn
+6035 print "score:"s" gems:"g
+6040 return
