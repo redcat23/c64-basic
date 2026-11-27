@@ -1,82 +1,89 @@
 # C64 BASIC
 
-Commodore 64 BASIC projects, experiments, and documented learning.
-
-This collection focuses on understanding how programs work, developing them incrementally, and balancing responsiveness with readable code.
+Commodore 64 BASIC games, experiments, and utilities developed incrementally with an emphasis on understandable code and responsive controls.
 
 ## Projects
 
-| Project | Studio project file | Notes |
+| Project | Description | Studio project |
 |---|---|---|
-| [Tetris](tetris/) | `tetris/Tetris.cbmprj` | A Tetris-style game in development. See the [project README](tetris/README.md) for controls and current status. |
-| [Maprun](Maprun/) | `Maprun/Maprun.cbmprj` | A maze movement experiment with WASD controls and a randomly moving character. See the [project README](Maprun/README.md) for controls and current status. |
-| [Diamond Dash](diamonddash/) | `diamonddash/diamonddash.cbmprj` | A diamond-collecting game prototype with a fixed map, scoring, and a collection goal. See the [project README](diamonddash/README.md) for controls and current status. |
-| [Keyboard Peek](keyboardpeek/) | `keyboardpeek/keyboardpeek.cbmprj` | A keyboard diagnostic utility that displays the scan code from `PEEK(197)`. See the [project README](keyboardpeek/README.md) for usage. |
+| [Tetris](tetris/README.md) | Tetris-style prototype with seven pieces, movement, rotation, collision detection, hard drop, delayed locking, and automatic falling. Line clearing, scoring, and game-over detection remain planned. | `tetris/Tetris.cbmprj` |
+| [Maprun](Maprun/README.md) | Fixed-map movement experiment with WASD controls, obstacle checks, and a second character that moves randomly. | `Maprun/Maprun.cbmprj` |
+| [Diamond Dash](diamonddash/README.md) | Early Boulder Dash-style prototype, baseline **0.5.0**, with diggable dirt, walls, 12 fixed diamonds, 25-point collection, and a five-diamond goal. Timer and level progression remain unfinished. | `diamonddash/diamonddash.cbmprj` |
+| [Keyboard Peek](keyboardpeek/README.md) | Five-line utility displaying the current keyboard scan code read from `PEEK(197)`. | `keyboardpeek/keyboardpeek.cbmprj` |
 
-## Folder layout
+## Organization and tools
 
-Each project keeps its Studio project file, BASIC source, and any supporting assets inside its own folder.
+Each project keeps its `.cbmprj` launcher, BASIC source, documentation, and supporting assets inside its own folder at the repository root. Source files are under each project's `BASIC Files` folder. A single Git repository tracks the collection.
 
-```text
-c64-basic/
-├── .gitignore
-├── LICENSE
-├── README.md
-├── Maprun/
-│   ├── Maprun.cbmprj
-│   ├── README.md
-│   └── BASIC Files/
-├── diamonddash/
-│   ├── diamonddash.cbmprj
-│   ├── README.md
-│   └── BASIC Files/
-├── keyboardpeek/
-│   ├── keyboardpeek.cbmprj
-│   ├── README.md
-│   └── BASIC Files/
-└── tetris/
-    ├── Tetris.cbmprj
-    ├── README.md
-    ├── BASIC Files/
-    └── Screen Designs/
-```
+- Target: Commodore 64, BASIC V2
+- Editor: CBM prg Studio 4.10.0 on Windows
+- Emulator used for development: VICE
+- Version control: Git and GitHub
 
-One Git repository at the collection root tracks all projects.
-
-## Development tools
-
-- **Language:** Commodore BASIC V2
-- **Editor:** CBM prg Studio 4.10.0
-- **Emulator:** VICE
-- **Version control:** Git and GitHub
-
-Open a project’s `.cbmprj` file in CBM prg Studio. Keep its file references relative to the folder containing that project file.
+Open the desired `.cbmprj` file in Studio, build the project, and run the generated program in VICE. See each project's README for controls and current limitations. Project-file paths are relative to the folder containing the `.cbmprj` file.
 
 ## Development workflow
 
-### Before editing
+### Retrieve changes
 
-With local work committed and the working tree clean, close the projects in Studio and retrieve the latest GitHub changes.
-
-For a Windows checkout at `Documents\c64-basic`, run in PowerShell:
+Close the projects in Studio. In PowerShell, check that the working tree is clean before pulling:
 
 ```powershell
 Set-Location "$env:USERPROFILE\Documents\c64-basic"
 git status
+```
+
+When local work is committed and the working tree is clean:
+
+```powershell
 git pull --ff-only origin main
 ```
 
-If Git reports local changes or an error, resolve them before continuing.
+Stop and resolve any error before continuing. This also retrieves edits made directly on GitHub.
 
-### Make and test changes
+### Edit, review, and commit
 
-1. Open the project’s `.cbmprj` file in Studio.
-2. Edit and save the changed files.
-3. Build the program and test it using VICE.
-4. Review the changes before committing.
+Save changes in Studio, build, and test the affected program. Review the changes from PowerShell, or use Studio's Git commands where available:
 
-Use `!-` comments for source documentation. Keep source filenames stable, and use Git commits and tags to record development history and version milestones.
+```powershell
+git status
+git diff
+```
 
-### Commit and push
+Stage specific files belonging to the change. For example, for a Diamond Dash source update:
 
-Studio
+```powershell
+git add -- "diamonddash/BASIC Files/diamonddash.bas"
+git diff --cached
+```
+
+Commit with a short title and a description of the actual changes and verification performed:
+
+```powershell
+$commitDescription = @'
+Describe the behavior changed and why.
+Record the checks actually performed and any known limitations.
+'@
+git commit -m "Describe the change" -m $commitDescription
+```
+
+Run each command separately and stop on an error. A commit saves a local checkpoint; publish it with:
+
+```powershell
+git push origin main
+git status
+```
+
+Keep source filenames stable. Use `!-` comments for new source documentation, and use commits and eventual tags to record development history. Existing prototypes may still contain numbered `REM` comments.
+
+## Generated files
+
+The root `.gitignore` excludes `bak/` directories at any level and generated files with these extensions: `.prg`, `.dbg`, `.dmp`, `.dup`, `.tmp`, and `.obj`. These can remain locally. Track source, project files, documentation, and required assets.
+
+## Contributions
+
+For bug reports, include the project, expected and actual behavior, reproduction steps, and emulator or hardware used. For changes, explain what changed and how it was tested.
+
+## License
+
+See the [MIT license](LICENSE). These are independent learning projects, unaffiliated with the owners of referenced games or trademarks.
