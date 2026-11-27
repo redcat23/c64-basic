@@ -10,10 +10,17 @@ Commodore 64 BASIC games, experiments, and utilities developed incrementally wit
 | [Maprun](Maprun/README.md) | Fixed-map movement experiment with WASD controls, obstacle checks, and a second character that moves randomly. | `Maprun/Maprun.cbmprj` |
 | [Diamond Dash](diamonddash/README.md) | Early Boulder Dash-style prototype, baseline **0.5.0**, with diggable dirt, walls, 12 fixed diamonds, 25-point collection, and a five-diamond goal. Timer and level progression remain unfinished. | `diamonddash/diamonddash.cbmprj` |
 | [Eatstar](eatstar/README.md) | Star-collection prototype with scoring, level thresholds, and an enemy that moves toward the player. | `eatstar/eatstar.cbmprj` |
+| [Eatstar Rewrite](eatstar-rewrite/README.md) | Separate series through **0.6**: two timed enemies, maze layouts, lives, sound, and restart handling. | `eatstar-rewrite/eatstar-rewrite.cbmprj` |
 | [Space](space/README.md) | Prison text-adventure prototype with eight rooms, typed commands, inventory, a guard conversation, and a door puzzle. | `space/space.cbmprj` |
 | [Keyboard Peek](keyboardpeek/README.md) | Five-line utility displaying the current keyboard scan code read from `PEEK(197)`. | `keyboardpeek/keyboardpeek.cbmprj` |
 
 ## Organization and tools
+
+### Eatstar development paths
+
+As of November 27, 2026, **Eatstar 0.8** and **Eatstar Rewrite 0.6** are separate development paths with shared historical context. Their version numbers are independent: Rewrite 0.6 is not original Eatstar 0.6. Neither path is designated abandoned or the automatic successor. They may evolve differently, exchange selected ideas, or eventually be retired individually. Preserve each history and review changes within the intended project. The [Rewrite README](eatstar-rewrite/README.md) records all six rewrite iterations and compares the two paths.
+
+### Project layout
 
 Each project keeps its `.cbmprj` launcher, BASIC source, documentation, and supporting assets inside its own folder at the repository root. Source files are under each project's `BASIC Files` folder. A single Git repository tracks the collection.
 
@@ -36,6 +43,7 @@ This repository contains source and project assets, not prebuilt `.prg` download
 | Maprun | `Maprun/Maprun.cbmprj` | `maprun.prg` |
 | Diamond Dash | `diamonddash/diamonddash.cbmprj` | `diamonddash.prg` |
 | Eatstar | `eatstar/eatstar.cbmprj` | `eatstar.prg` |
+| Eatstar Rewrite | `eatstar-rewrite/eatstar-rewrite.cbmprj` | `mazeandchase.prg` (current project setting; see its README for a source-path mismatch) |
 | Space | `space/space.cbmprj` | `space.prg` |
 | Keyboard Peek | `keyboardpeek/keyboardpeek.cbmprj` | `keyboardpeek.prg` |
 
