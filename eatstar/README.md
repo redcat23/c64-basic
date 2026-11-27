@@ -1,10 +1,10 @@
-# Eatstar
+﻿# Eatstar
 
 A Commodore 64 BASIC V2 star-collection prototype. The player moves around a bordered board, collecting stars for 10 points each. An enemy moves toward the player and deducts 10 points when it takes a star. Score thresholds change the level and target number of stars.
 
 ## Status and controls
 
-The latest source commit is labeled version **0.8** (`5a40e3e`). Movement uses W, A, S, and D; the C64 F1 key displays debugging values. These controls are read directly from the source's `GET` comparisons.
+The latest source commit is labeled version **0.8** (`5a40e3e`). Movement uses W, A, S, and D. These controls are read directly from the source's `GET` comparisons.
 
 The BASIC source draws its own board. [GameBoard.sdd](Screen%20Designs/GameBoard.sdd) contains three screen designs for editing in Studio; adding it to the project does not by itself make the BASIC program load those layouts. This remains a prototype, with no implemented player/enemy game-over condition or ending.
 
@@ -31,3 +31,4 @@ The loading steps were checked against emulator documentation; this update did n
 ## License
 
 Covered by the repository's [MIT license](../LICENSE).
+
