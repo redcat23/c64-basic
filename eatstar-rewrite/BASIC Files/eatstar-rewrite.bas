@@ -1,6 +1,6 @@
 0 clr:gosub5000:gosub4000:gosub5500:gosub4400:gosub4100:gosub4300
 1 getx$:ifx$<>""theny$=x$
-2 ifti-t>zthengosub520
+2 ifti-t>zthengosub520:gosub620
 3 ify$="w"ory$="s"ory$="a"ory$="d"ory$="{f1}"then5
 4 goto1
 5 w=h:x=i:y=j
@@ -17,26 +17,39 @@
 20 goto1
 
 520 t=ti:a=d:b=e:r=f
-521 ife>ithena=a-40:b=b-1:n=1:goto700
-522 ife<ithena=a+40:b=b+1:n=2:goto700
-523 iff>jthena=a-1:r=r-1:n=3:goto700
-524 iff<jthena=a+1:r=r+1:n=4:goto700
+521 ife>ithena=a-40:b=b-1:n=1:goto530
+522 ife<ithena=a+40:b=b+1:n=2:goto530
+523 iff>jthena=a-1:r=r-1:n=3:goto530
+524 iff<jthena=a+1:r=r+1:n=4:goto530
 525 return
-700 ifpeek(m+a)=32thengoto800
-705 ifa=pthens=s-10:gosub3010:o=o-1:gosub4100:goto800
-710 ifa=hthengosub2000:return
-715 a=d:b=e:r=f:onngoto522,523,524:return
-800 pokem+d,32:d=a:e=b:f=r:pokec+d,7:pokem+d,28:return
+530 ifpeek(m+a)=32thengoto550
+535 ifa=pthens=s-10:gosub3010:o=o-1:gosub4100:goto550
+540 ifa=hthengosub2000:return
+545 a=d:b=e:r=f:onngoto522,523,524:return
+550 pokem+d,32:d=a:e=b:f=r:pokec+d,7:pokem+d,28
+555 return
+
+620 t=ti:a2=d2:b2=e2:r2=f2
+621 iff2>jthena2=a2-1:r2=r2-1:n=1:goto630
+622 iff2<jthena2=a2+1:r2=r2+1:n=2:goto630
+623 ife2>ithena2=a2-40:b2=b2-1:n=3:goto630
+624 ife2<ithena2=a2+40:b2=b2+1:n=4:goto630
+625 return
+630 ifpeek(m+a2)=32thengoto650
+635 ifa2=pthens=s-10:gosub3010:o=o-1:gosub4100:goto650
+640 ifa2=hthengosub2000:return
+645 a2=d2:b2=e2:r2=f2:onngoto622,623,624:return
+650 pokem+d2,32:d2=a2:e2=b2:f2=r2:pokec+d2,7:pokem+d2,94
+655 return
 
 1000 print"{home}{down*3}{right}h="str$(h)"   "
-1005 print"{right}i="str$(i)" e="str$(e)"   "
-1010 print"{right}j="str$(j)" f="str$(f)"   "
-1015 print"{right}n="str$(n)"   "
-1020 print"{right}p="str$(p)"   "
-1025 print"{right}d="str$(d)"   "
+1005 print"{right}i="str$(i)" e="str$(e2)"   "
+1010 print"{right}j="str$(j)" f="str$(f2)"   "
+1020 print"{right}ti="ti$" ti"str$(ti)" z="str$(z)
+1025 print"{right}d="str$(d2)"   "
 1090 return
 
-2000 pokem+d,32:pokem+p,32:pokec+h,2:pokem+h,86:gosub3020:pokem+h,32:o=0
+2000 pokem+d,32:pokem+d2,32:pokem+p,32:pokec+h,2:pokem+h,86:gosub3020:pokem+h,32:o=0
 2001 PRINT"{home}{down*6}"
 2002 printtab(14)"{red}UCCCCCCCCCCI"
 2003 printtab(14)"{125} you died {125}"
@@ -76,10 +89,11 @@
 4230 ifk=0thengoto4500
 4290 return
 
-4300 i=2:j=16:e=3:f=38
-4302 h=i*40+j:d=e*40+f
+4300 i=2:j=16:e=3:f=38:e2=23:f2=3
+4302 h=i*40+j:d=e*40+f:d2=e2*40+f2
 4305 pokem+h,g:pokec+h,1
 4310 pokem+d,28:pokec+d,7
+4315 pokem+d2,94:pokec2+d2,7
 4320 return
 
 4400 ifl=1thengosub6000
