@@ -9,9 +9,9 @@ This collection focuses on understanding how programs work, developing them incr
 | Project | Studio project file | Notes |
 |---|---|---|
 | [Tetris](tetris/) | `tetris/Tetris.cbmprj` | A Tetris-style game in development. See the [project README](tetris/README.md) for controls and current status. |
-| [Maprun](Maprun/) | `Maprun/Maprun.cbmprj` | BASIC source and Studio project. |
-| [Diamond Dash](diamonddash/) | `diamonddash/diamonddash.cbmprj` | BASIC source and Studio project. |
-| [Keyboard Peek](keyboardpeek/) | `keyboardpeek/keyboardpeek.cbmprj` | BASIC source and Studio project. |
+| [Maprun](Maprun/) | `Maprun/Maprun.cbmprj` | A maze movement experiment with WASD controls and a randomly moving character. See the [project README](Maprun/README.md) for controls and current status. |
+| [Diamond Dash](diamonddash/) | `diamonddash/diamonddash.cbmprj` | A diamond-collecting game prototype with a fixed map, scoring, and a collection goal. See the [project README](diamonddash/README.md) for controls and current status. |
+| [Keyboard Peek](keyboardpeek/) | `keyboardpeek/keyboardpeek.cbmprj` | A keyboard diagnostic utility that displays the scan code from `PEEK(197)`. See the [project README](keyboardpeek/README.md) for usage. |
 
 ## Folder layout
 
@@ -24,12 +24,15 @@ c64-basic/
 ├── README.md
 ├── Maprun/
 │   ├── Maprun.cbmprj
+│   ├── README.md
 │   └── BASIC Files/
 ├── diamonddash/
 │   ├── diamonddash.cbmprj
+│   ├── README.md
 │   └── BASIC Files/
 ├── keyboardpeek/
 │   ├── keyboardpeek.cbmprj
+│   ├── README.md
 │   └── BASIC Files/
 └── tetris/
     ├── Tetris.cbmprj
